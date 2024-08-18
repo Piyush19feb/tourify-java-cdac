@@ -13,8 +13,8 @@ public class TourifyApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TourifyApplication.class, args);
-		log.info("slf4j logger: Spring Boot Started On Port No: 9999");
-		System.out.println("sysout: Spring Boot Started On Port No: 9999");
+//		log.info("slf4j logger: Spring Boot Started On Port No: 9999");
+//		System.out.println("sysout: Spring Boot Started On Port No: 9999");
 	}
 
 	// bean declaration for ModelMapper
