@@ -35,7 +35,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 		String requestToken = request.getHeader("Authorization"); // here Authorization is a key for which mapping value will be token
 		// Token format will be like: Bearer va6sdbv6as1df5f4s46v4sa684v6
 		
-		System.out.println("gotTokenFromRequest: "+requestToken);
+//		System.out.println("gotTokenFromRequest: "+requestToken);
 		
 		String username = null;
 		
@@ -48,17 +48,17 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 			try {
 				username = this.jwtTokenHelper.getUsernameFromToken(token);
 			} catch (IllegalArgumentException e) {
-				System.out.println("Unable to get jwt token");
+//				System.out.println("Unable to get jwt token");
 			} catch(ExpiredJwtException e) {
-				System.out.println("Jwt token has expired");
+//				System.out.println("Jwt token has expired");
 			} catch(MalformedJwtException e) {
-				System.out.println("invalid jwt");
+//				System.out.println("invalid jwt");
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
 			
 		}else {
-			System.out.println("JWT is empty or does not begin with Bearer");
+//			System.out.println("JWT is empty or does not begin with Bearer");
 		}
 		
 		// Once we get the token..now validate
@@ -70,10 +70,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 				authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 				SecurityContextHolder.getContext().setAuthentication(authentication);
 			}else {
-				System.out.println("Invalid jwt token");
+//				System.out.println("Invalid jwt token");
 			}
 		}else {
-			System.out.println("Username is null or context is not null");
+//			System.out.println("Username is null or context is not null");
 		}
 		
 		filterChain.doFilter(request, response);
